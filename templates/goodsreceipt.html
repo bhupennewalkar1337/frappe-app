@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div style="padding-top: 50px;" class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{message}}
+            </div>
+        {% endfor %}
+        <h1>Goods Receipt</h1>
+        <table border="1" class="table">
+            <tr>
+                <th>Stock Number</th>
+                <th>Actual Quantity</th>
+                <th>Item Description</th>
+                <th>Selling Price</th>
+                <th>Current Cost</th>
+                <th>Profit</th>
+            <tr>
+                
+            {% for good in goods %}
+                <tr>
+                    <td>{{ good.stock_no }}</td>
+                    <td>{{ good.act_qnt }}</td>
+                    <td>{{ good.item_desc }}</td>
+                    <td>{{ good.selling_price }}</td>
+                    <td>{{ good.current_cost }}</td>
+                    <td>{{ good.selling_price - good.current_cost }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    <div>
+{% endblock %}

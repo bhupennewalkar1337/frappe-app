@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Raymonds Shop{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    
+    <link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet"> 
+    <style>
+        body {
+            font-family: 'Proza Libre', sans-serif;
+            font-size: 14px
+        }
+    </style>
+    
+    {% block background_block %}
+        <style type="text/css">
+        html, body {
+            background-color: #F5F5F5;
+        }
+    </style>
+    {% endblock %}
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">        
+        <div class="collapse navbar-collapse" id="global-navbar">
+            <ul class="nav navbar-nav">
+                <li {% if request.path=='/' or request.path=='/index' %} class="active"{% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+                <li {% if request.path=='/goodsreceipt' %} class="active"{% endif %}><a href="{{ url_for('goods_receipt') }}">Goods Receipt</a></li>
+                <li {% if request.path=='/stockin' %} class="active"{% endif %}><a href="{{ url_for('stock_in') }}">Stock In</a></li>
+                <li {% if request.path=='/stockout' or request.path=='/index' %} class="active"{% endif %}><a href="{{ url_for('stock_out') }}">Stock Out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
